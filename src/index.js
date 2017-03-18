@@ -1,8 +1,1 @@
-
-
-class Temp {
-
-  temp() {
-    console.log(1);
-  }
-}
+var a=  22;
