@@ -4,7 +4,9 @@
   "description": "Pattern Lock Extension for Browser",
   "main": "lib/index.js",
   "scripts": {
-    "build": "babel src -d lib",
+    "clean": "rm -rf lib/*",
+    "copy": "cp -a src/. lib/",
+    "build": "npm run clean && npm run copy && babel src -d lib",
     "test": "test"
   },
   "repository": {
@@ -28,6 +30,7 @@
   "devDependencies": {
     "babel-cli": "^6.24.0",
     "babel-polyfill": "^6.23.0",
-    "babel-preset-env": "^1.2.2"
+    "babel-preset-env": "^1.2.2",
+    "babel-preset-latest": "^6.24.0"
   }
 }
