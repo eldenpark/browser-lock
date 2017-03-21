@@ -567,7 +567,7 @@ optgroup > option {
 #supportdev {
     border: #F00 1px dashed;
     border-radius: 5px;
-    background: url(../image/thanks.jpg) 400px bottom no-repeat;
+    background: url(../imgs/thanks.jpg) 400px bottom no-repeat;
 }
 
 #chongzhi iframe {
@@ -631,7 +631,7 @@ details > details {
     position: absolute;
     width: 19px;
     height: 18px;
-    background: url(../image/star.png);
+    background: url(../imgs/star.png);
 }
 
 #lirateus #leftStar {
@@ -676,12 +676,12 @@ input.fncolor {
     right: -15px;
     width: 30px;
     height: 30px;
-    background-image: url("../image/icon-close_g.png") ;
+    background-image: url("../imgs/icon-close_g.png") ;
     background-size: 30px;
 }
 
 .closeNewMessage:hover{
-    background-image: url("../image/icon-close.png") ;
+    background-image: url("../imgs/icon-close.png") ;
 }
 
 .newMessageTitle{
