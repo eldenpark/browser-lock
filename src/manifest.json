@@ -2,6 +2,10 @@
    "background": {
       "page": "background.html"
    },
+
+   "browser_action" : {
+      "default_popup": "./html/popup.html"
+   },
    "content_scripts": [ {
       "all_frames": true,
       "css": [ "css/event.css" ],
@@ -25,5 +29,5 @@
    "permissions": [ "tabs", "\u003Call_urls>", "clipboardRead", "clipboardWrite", "bookmarks", "notifications", "storage", "unlimitedStorage", "webNavigation", "webRequest", "webRequestBlocking" ],
    "update_url": "https://clients2.google.com/service/update2/crx",
    "version": "2.9.2",
-   "web_accessible_resources": [ "image/*", "js/*", "icon.png", "html/notifi.html" ]
+   "web_accessible_resources": [ "image/*", "js/*", "icon.png", "html/*" ]
 }
