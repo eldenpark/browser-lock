@@ -1,22 +1,22 @@
 {
   "background": {
-    "page": "background.html"
+    "page": "html/background.html"
   },
   "browser_action" : {
-      "default_popup": "./html/popup.html"
+      "default_popup": "html/popup.html"
    },
   "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'",
   "default_locale": "en",
   "description": "__MSG_descriptionjson__",
   "icons": {
-    "128": "icon.png",
-    "16": "icon.png",
-    "48": "icon.png"
+    "128": "img/logo-128.png",
+    "48": "img/logo-48.png",
+    "16": "img/logo-16.png"
   },
   "manifest_version": 2,
   "minimum_chrome_version": "22",
   "name": "Pattern Lock Extension",
-  "options_page": "options.html",
+  "options_page": "html/options.html",
   "permissions": [
     "tabs",
     "\u003Call_urls>",
@@ -32,8 +32,7 @@
   ],
   "version": "2.9.2",
   "web_accessible_resources": [
-    "image/*",
-    "js/*",
-    "icon.png"
+    "img/*",
+    "js/*"
   ]
 }

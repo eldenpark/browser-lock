@@ -1,0 +1,73 @@
+<!doctype html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <title>Pattern Lock Extension Configuration</title>
+  <link rel="stylesheet" href="/css/patternLock.css">
+  <link rel="stylesheet" href="/css/options.css">
+</head>
+
+<body>
+
+<div id="wrap">
+
+  <div id="masthead">
+    <p class="logo">
+      logo
+    </p>
+    <ul class="rightBtnGroup">
+      <li class="">Stash</li>
+      <li class="">Pattern</li>
+      <li class="">Docs</li>
+      <li class=""><a href="https://github.com/enginehenryed/pattern-lock-extension">GIT</a></li>
+    </ul>
+  </div>
+
+  <div id="header">
+    <p class="title">Pattern Lock Extension</p>
+    <p class="subtitle">Browser lock for whatever circumstance. Safe browsing.</p>
+  </div>
+
+  <div id="desc">
+    Pattern lock is something like this.
+  </div>
+
+  <div id="stash">
+    <p class="title">History</p>
+    <p class="content">
+      List of web browsing history by datetime. Click and get yourself onto the exact spot you were
+      on last time.
+    </p>
+    <div id="stashList">
+
+    </div>
+  </div>
+
+  <div id="patternConf">
+    <p class="title">Pattern</p>
+    <p class="content">Register or update the pattern.</p>
+    <div id="patternLockWrapper">
+      <div class="messageBox">
+        <p id="messageDefault">Draw on</p>
+        <p id="messageSuccess" class="hide">Successfully updated the pattern.</p>
+        <p id="messageError" class="hide">Wrong pattern. Try again.</p>
+      </div>
+      <div id="patternBlock" class="hide"></div>
+      <div id="patternLock"/>
+    </div>
+
+  </div>
+
+  <div id="credit">
+    <p>who made this?</p>
+    <p>All rights reserved</p>
+  </div>
+
+</div>
+
+<script src="/js/jquery-3.2.0.js"></script>
+<script src="/js/patternLock.js"></script>
+<script src="/js/options.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,17 @@
+@import "normalize.scss";
+@import "general.scss";
+@import "mixin.scss";
+@import "masthead.scss";
+@import "header.scss";
+@import "stash.scss";
+@import "patternLockWrapper.scss";
+
+#wrap {
+  width: 850px;
+  margin: 0 auto;
+  @include borderGrey;
+
+  > div {
+    margin-bottom: 12px;
+  }
+}
