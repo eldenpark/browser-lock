@@ -1,10 +1,15 @@
-function closeAllTab() {
+import handleStorage from './handleStorage'
+
+var background = chrome.extension.getBackgroundPage();
+const brwlock = window.brwlock = {}
+
+function closeAllTabs() {
   console.log("closeAllTab()");
 
   var lockPageTabId;
 
   // pattern lock page open
-  chrome.tabs.create({ "url": "/html/lock.html" }, function (tab) {
+  chrome.tabs.create({ "url": "/html/options.html" }, function (tab) {
     console.log("lock page tab create");
     lockPageTabId = tab.id;
   });
@@ -20,51 +25,32 @@ function closeAllTab() {
       }
     }
 
-    saveTabUrlIntoStorage(pastUrls);
-    //getAllCookies();
+    var saveUrlFormat = "{";
+    for (var i = 0; i < pastUrls.length; i++) {
+      saveUrlFormat += pastUrls[i] + ";"
+    }
+    saveUrlFormat += "}";
+    handleStorage.save('brwlock-pastUrls', saveUrlFormat);
   });
 }
-
-
-function saveTabUrlIntoStorage(pastUrls) {
-
-  var saveUrlFormat = "{";
-  for (var i = 0; i < pastUrls.length; i++) {
-    saveUrlFormat += pastUrls[i] + ";"
-  }
-  saveUrlFormat += "}";
-
-  chrome.storage.sync.set({ 'plExt-pastUrls': saveUrlFormat }, function () {
-    console.log("save storage " + saveUrlFormat);
-  });
-}
-
 
 function openAllPastUrls() {
-
-  chrome.storage.sync.get('plExt-pastUrls', function (items) {
-    var urls = String(Object.values(items));
-    urls = urls.replace('{', '');
-    urls = urls.replace('}', '');
-    let pastUrls = urls.split(';');
-
-    for (var i = 0; i < pastUrls.length; i++) {
-      if (pastUrls[i].length > 0) {
-        chrome.tabs.create({ "url": pastUrls[i] });
-      }
-    }
-  });
+  handleStorage.get('brwlock-pastUrls', getPastUrlSuccessCallback);
 }
 
-// function getAllCookies() {
-//   chrome.cookies.getAll(function (cookies) {
-//     for (var i = 0; i < cookies.length; i++) {
-//       console.log("cookies [" + i + "] " + Object.values(cookies[i]));
-//     }
-//   });
-// }
+function getPastUrlSuccessCallback(urls) {
+  urls = urls.replace('{', '');
+  urls = urls.replace('}', '');
+  let pastUrls = urls.split(';');
+
+  for (var i = 0; i < pastUrls.length; i++) {
+    if (pastUrls[i].length > 0) {
+      chrome.tabs.create({ "url": pastUrls[i] });
+    }
+  }
+}
 
 export default {
   openAllPastUrls,
-  closeAllTab
+  closeAllTabs
 }

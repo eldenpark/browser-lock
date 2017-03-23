@@ -4,16 +4,16 @@ var closeBtn = document.getElementById('lockBrowserBtn');
 
 document.addEventListener('DOMContentLoaded', function () {
   background.console.log('evt handler');
-  document.getElementById('lockBrowserBtn').addEventListener('click', closeAllTab);
-  document.getElementById('unlockBrowserBtn').addEventListener('click', openAllPastUrl);
+  document.getElementById('lockBrowserBtn').addEventListener('click', closeAllTabs);
+  document.getElementById('unlockBrowserBtn').addEventListener('click', openAllPastUrls);
 })
 
 function closeAllTabs(evt) {
   background.console.log('removeTab btn click');
-  background.closeAllTabs();
+  background.brwlock.closeAllTabs();
 }
 
 function openAllPastUrls(evt) {
   background.console.log('reopen btn click');
-  background.openAllPastUrls();
+  background.brwlock.openAllPastUrls();
 }

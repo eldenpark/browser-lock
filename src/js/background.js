@@ -8,10 +8,14 @@ import handleCookies from './modules/handleCookies'
 const brwlock = window.brwlock = {}
 
 brwlock.closeAllTabs = () => {
-  handleTabs.closeAllTab();
-  handleCookies.closeAllTab();
+  console.log("background closeAlltabs");
+  handleTabs.closeAllTabs();
+  handleCookies.closeAllTabs();
+}
+
+brwlock.openAllPastUrls = () => {
+  handleTabs.openAllPastUrls();
 }
 
 brwlock.handleCookies = handleCookies;
 
-brwlock.openAllPastUrls = handleTabs.openAllPastUrls;
