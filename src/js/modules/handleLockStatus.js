@@ -1,23 +1,12 @@
 import handleStorage from './handleStorage'
+import statusActions from '../actions/statusActions'
 
-// function checkLockStatus() {
-//   handleStorage.get("brwlock-lockStatus", function (items) {
-//     console.log("status : " + String(Object.values(items)));
-//     if(String(Object.values(items)) == 'lock') {
-//       console.log("return true");
-//       return true;
-//     } else {
-//       console.log("return false");
-//       return false;
-//     }
-//   });
-// }
+function checkLockStatus(getLockStatusSuccessCallBack) {
+  const promise = new Promise((resolve, reject) => {
+    statusActions.getLockStatus("brwlock-lockStatus", getLockStatusSuccessCallBack, resolve)
+  })
 
-
-function checkLockStatus(browserLockStatus) {
-  handleStorage.get("brwlock-lockStatus", function (items) {
-    browserLockStatus(String(Object.values(items)));
-  });
+  return promise;
 }
 
 function updateLockStatus(lockStatus) {

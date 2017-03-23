@@ -10,28 +10,31 @@ import handleStorage from './modules/handleStorage'
  */
 
 const brwlock = window.brwlock = {}
-
 let browserIsLocked;
 
 brwlock.lockBrowser = () => {
 
-  handleLockStatus.checkLockStatus(setBrowserLockStatus);
+  let checkStatus = handleLockStatus.checkLockStatus(getLockStatusSuccessCallBack);
 
-  console.log("check lock : " + browserIsLocked);
-  if(browserIsLocked == false) {
-    handleTabs.closeAllTabs();
-    handleCookies.save();
-    handleCookies.remove();
-    handlePw.remove();  
-    handleLockStatus.updateLockStatus('lock');
-  } else {
-    console.log("already lock!");
-  }
+  Promise
+    .all([checkStatus])
+    .then(() => {
+      console.log("check lock : " + browserIsLocked);
+      if (browserIsLocked == false) {
+        handleTabs.closeAllTabs();
+        handleCookies.save();
+        handleCookies.remove();
+        handlePw.remove();
+        handleLockStatus.updateLockStatus('lock');
+
+      } else {
+        console.log("already lock!");
+      }
+    })
 }
 
-function setBrowserLockStatus(val) {
-  console.log("status : " + val);
-  if(val == 'lock') {
+function getLockStatusSuccessCallBack(status) {
+  if(status == 'lock') {
       browserIsLocked = true;
   } else {
     browserIsLocked = false;
