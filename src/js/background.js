@@ -21,10 +21,13 @@ brwlock.lockBrowser = () => {
     .then(() => {
       console.log("check lock : " + browserIsLocked);
       if (browserIsLocked == false) {
+
         handleTabs.closeAllTabs();
         handleCookies.save();
-        handleCookies.remove();
-        handlePw.remove();
+        // handleCookies.remove();
+        // handleHistory.remove();
+        // handlePw.remove();
+        handleStorage.removeBrowsingData();
         handleLockStatus.updateLockStatus('lock');
 
       } else {

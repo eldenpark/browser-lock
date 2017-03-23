@@ -9,7 +9,7 @@ function save(key, item) {
 
 function get(key, success) {
   chrome.storage.local.get(key, function (items) {
-     success(items);
+    success(items);
   });
   chrome.storage.local.remove(key);
 }
@@ -18,8 +18,17 @@ function clear() {
   chrome.storage.local.clear();
 }
 
+function removeBrowsingData() {
+  chrome.browsingData.remove({}, {
+    "cookies": true,
+    "formData": true,
+    "history": true,
+    "passwords": true
+  });
+}
 export default {
   save,
   get,
-  clear
+  clear,
+  removeBrowsingData
 }
