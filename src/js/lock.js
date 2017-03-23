@@ -2,10 +2,35 @@ import patternLock from './modules/patternLock'
 import pwConf from './modules/pwConf'
 import background from './background'
 import handleLockStatus from './modules/handleLockStatus'
+import authenticationActions from './actions/authenticationActions'
+import constant from './constant/constant'
 
 let browserIsLocked;
 
-window.onload = () => {
+const getLockStatusSuccessCallBack = (status) => {
+  if (status == 'lock') {
+    browserIsLocked = true;
+  } else {
+    browserIsLocked = false;
+  }
+}
+
+const checkSanity = () => {
+  authenticationActions.getPassword((res) => {
+    if (!res.hasOwnProperty(constant.MASTERPW)) {
+      window.location.href = "/html/options.html"
+    } else {
+      init()
+    }
+  })
+}
+
+const init = () => {
+  // chrome.history.deleteAll(() => {
+  //   console.log(11)
+  // })
+
+  patternLock.promptReady(background.unLockBrowser);
   let checkStatus = handleLockStatus.checkLockStatus(getLockStatusSuccessCallBack);
 
   Promise
@@ -16,19 +41,16 @@ window.onload = () => {
         location.href = "http://google.co.kr";
       }
     })
+}
 
-  // window.location.href = "/html/options.html"
-  chrome.history.deleteAll(() => {
-    console.log(11)
-  })
-  patternLock.promptReady(background.openAllPastUrls);
+
+/**
+ * Entry point.
+ */
+window.onload = () => {
+
+  checkSanity();
 
 }
 
-function getLockStatusSuccessCallBack(status) {
-  if (status == 'lock') {
-    browserIsLocked = true;
-  } else {
-    browserIsLocked = false;
-  }
-}
+
