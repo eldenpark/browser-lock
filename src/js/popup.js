@@ -7,12 +7,12 @@ document.addEventListener('DOMContentLoaded', function () {
   document.getElementById('unlockBrowserBtn').addEventListener('click', openAllPastUrl);
 })
 
-function closeAllTab(evt) {
+function closeAllTabs(evt) {
   background.console.log('removeTab btn click');
-  background.closeAllTab();
+  background.closeAllTabs();
 }
 
-function openAllPastUrl(evt) {
+function openAllPastUrls(evt) {
   background.console.log('reopen btn click');
   background.openAllPastUrls();
 }

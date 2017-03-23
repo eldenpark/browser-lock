@@ -1,7 +1,14 @@
 import handleTabs from './modules/handleTabs'
+import handleCookies from './modules/handleCookies'
 
 /**
  * Apis will be registered into Window object.
  */
-window.closeAllTab = handleTabs.closeAllTab;
-window.openAllPastUrls = handleTabs.openAllPastUrls;
+
+const brwlock = window.brwlock = {}
+
+brwlock.closeAllTabs = () => {
+  handleTabs.closeAllTab();
+  handleCookies.closeAllTab();
+}
+brwlock.openAllPastUrls = handleTabs.openAllPastUrls;
