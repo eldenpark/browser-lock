@@ -23,9 +23,6 @@ function closeAllTab() {
     saveTabUrlIntoStorage(pastUrls);
     //getAllCookies();
   });
-
-  // 일주일까지의 기록 삭제
-
 }
 
 
