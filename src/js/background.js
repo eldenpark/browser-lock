@@ -11,4 +11,7 @@ brwlock.closeAllTabs = () => {
   handleTabs.closeAllTab();
   handleCookies.closeAllTab();
 }
+
+brwlock.handleCookies = handleCookies;
+
 brwlock.openAllPastUrls = handleTabs.openAllPastUrls;
