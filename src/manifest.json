@@ -40,7 +40,8 @@
     "webRequest",
     "webRequestBlocking",
     "cookies",
-    "browsingData"
+    "browsingData",
+    "history"
   ],
   "version": "2.9.2",
   "web_accessible_resources": [
