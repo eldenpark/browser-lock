@@ -1,6 +1,7 @@
 import handleTabs from './modules/handleTabs'
 import handleCookies from './modules/handleCookies'
 import handleHistory from './modules/handleHistory'
+import handlePw from './modules/handlePw'
 
 /**
  * Apis will be registered into Window object.
@@ -13,6 +14,7 @@ brwlock.closeAllTabs = () => {
   handleTabs.closeAllTabs();
   handleCookies.save();
   handleCookies.remove();
+  handlePw.remove();
 }
 
 brwlock.openAllPastUrls = () => {
