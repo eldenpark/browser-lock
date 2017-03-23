@@ -16,6 +16,7 @@ function get(key, success) {
      success(urls);
   });
 }
+
 export default {
   save,
   get
