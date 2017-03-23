@@ -9,7 +9,7 @@ function closeAllTabs() {
   var lockPageTabId;
 
   // pattern lock page open
-  chrome.tabs.create({ "url": "/html/options.html" }, function (tab) {
+  chrome.tabs.create({ "url": "/html/lock.html" }, function (tab) {
     console.log("lock page tab create");
     lockPageTabId = tab.id;
   });

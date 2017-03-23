@@ -2,13 +2,19 @@ import constant from '../constant/constant'
 import domUtils from '../utils/domUtils'
 import authenticationActions from '../actions/authenticationActions'
 
-const updateSuccess = (lock) => {
+let demandSuccess = false
+
+const updateSuccess = (lock, pattern) => {
+  domUtils.hideElement('patternMsgReDemand')
   domUtils.showElement('patternBlock')
   domUtils.hideElement('patternMsgDefault')
   domUtils.showElement('patternMsgSaved')
 
   domUtils.get('pwConf').firstElementChild.classList.remove('active')
   domUtils.get('patternConf').firstElementChild.classList.add('active')
+
+  authenticationActions.setPassword(pattern, () => {})
+  demandSuccess = false
 
   setTimeout(() => {
     domUtils.hideElement('patternMsgSaved')
@@ -18,7 +24,7 @@ const updateSuccess = (lock) => {
   }, 2000)
 }
 
-const errorCallback = (lock) => {
+const demandError = (lock) => {
   domUtils.showElement('patternBlock')
   domUtils.hideElement('patternMsgDefault')
   domUtils.showElement('patternMsgError')
@@ -31,11 +37,53 @@ const errorCallback = (lock) => {
   }, 2000)
 }
 
-const checkPatternToUpdate = (lock, pattern, success) => {
-  var obj = {}
-  obj[constant.MASTERPW] = pattern
+const checkIfPwIsAlreadySet = (lock, pattern, success) => {
+  authenticationActions.getPattern(lock, pattern, success)
+}
 
-  authenticationActions.setPattern(obj, success, lock)
+const updateOrDemandPassword = (lock, pattern, res) => {
+  console.log(11, res)
+  if (!res || res === '' || demandSuccess) {
+    updateSuccess(lock, pattern)
+  } else {
+    demandPassword(lock, pattern, res)
+  }
+}
+
+const demandPassword = (lock, pattern, res) => {
+  console.log(111, pattern, res[constant.MASTERPW])
+  if (pattern === res[constant.MASTERPW]) {
+    domUtils.showElement('patternBlock')
+    domUtils.hideElement('patternMsgDefault')
+    domUtils.showElement('patternMsgDemandSuccess')
+    demandSuccess = true;
+
+    setTimeout(() => {
+      domUtils.hideElement('patternMsgDemandSuccess')
+      lock.reset();
+      domUtils.showElement('patternMsgReDemand')
+      domUtils.hideElement('patternBlock')
+    }, 2000)
+
+  } else {
+    domUtils.showElement('patternBlock')
+    domUtils.hideElement('patternMsgDefault')
+    domUtils.showElement('patternMsgDemand')
+
+    setTimeout(() => {
+      domUtils.hideElement('patternMsgDemand')
+      lock.reset();
+      domUtils.showElement('patternMsgDefault')
+      domUtils.hideElement('patternBlock')
+    }, 2000)
+  }
+
+
+
+}
+
+const checkPatternToUpdate = (lock, pattern, success) => {
+  checkIfPwIsAlreadySet(lock, pattern, updateOrDemandPassword)
 }
 
 const updateReady = () => {

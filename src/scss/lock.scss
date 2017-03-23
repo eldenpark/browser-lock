@@ -1,0 +1,12 @@
+@import "normalize.scss";
+@import "general.scss";
+@import "color.scss";
+
+body {
+  overflow: hidden;
+}
+
+#wrap {
+  background-color: $blackish;
+  height: 100%;
+}
