@@ -2,7 +2,6 @@ import constant from '../constant/constant'
 import domUtils from '../utils/domUtils'
 import authenticationActions from '../actions/authenticationActions'
 
-
 const validatePw = () => {
   const val1 = domUtils.get('pwConfPw1').value
   const val2 = domUtils.get('pwConfPw2').value
@@ -13,12 +12,14 @@ const validatePw = () => {
   } else {
     updateError()
   }
-
 }
 
 const updateSuccess = () => {
   domUtils.hideElement('pwConfMsgDefault')
   domUtils.showElement('pwConfMsgSuccess')
+
+  domUtils.get('patternConf').firstElementChild.classList.remove('active')
+  domUtils.get('pwConf').firstElementChild.classList.add('active')
 
   setTimeout(() => {
     domUtils.hideElement('pwConfMsgSuccess')
@@ -42,11 +43,6 @@ const updateReady = () => {
     validatePw()
   })
 }
-
-
-
-
-
 
 export default {
   updateReady
