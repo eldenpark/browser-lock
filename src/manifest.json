@@ -29,7 +29,8 @@
     "webNavigation",
     "webRequest",
     "webRequestBlocking",
-    "cookies"
+    "cookies",
+    "browsingData"
   ],
   "version": "2.9.2",
   "web_accessible_resources": [

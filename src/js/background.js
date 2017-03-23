@@ -21,7 +21,7 @@ function closeAllTab() {
     }
 
     saveTabUrlIntoStorage(pastUrls);
-    //getAllCookies();
+    getAllCookies();
   });
 }
 
@@ -56,11 +56,29 @@ function openAllPastUrl() {
   });
 }
 
+
+function cookieControl() {
+  console.log("cookie control");
+  getAllCookies();
+}
+
 function getAllCookies() {
-  chrome.cookies.getAll(function (cookies) {
-    for (var i = 0; i < cookies.length; i++) {
-      console.log("cookies [" + i + "] " + Object.values(cookies[i]));
-    }
+
+  chrome.cookies.getAll({}, function (cookies) {
+    console.log("cookies length " + cookies.length);
+    chrome.storage.local.set({ 'plExt-cookies': cookies }, function () {
+    });
   });
+
+  chrome.storage.local.getBytesInUse("plExt-cookies", function(bytesInUse) {
+    console.log("byte : " + bytesInUse);
+  });
+
+  chrome.browsingData.removeCookies({});
+}
+
+function clearStorage() {
+  chrome.storage.local.clear();
+  chrome.storage.local.clear();
 }
 
