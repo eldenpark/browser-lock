@@ -1,8 +1,8 @@
+import handleStorage from './handleStorage'
+
 function save() {
   chrome.history.search({ text: '' }, function (histories) {
-    chrome.storage.local.set({ 'brwlock-history': histories }, function () {
-      console.log('save history to storage ' + histories);
-    });
+    handleStorage.save('brwlock-history', histories);
   });
 }
 
@@ -11,7 +11,7 @@ function remove() {
 }
 
 function restore() {
-  chrome.storage.local.get('brwlock-history', function (items) {
+  handleStorage.get('brwlock-history', function (items) {
     var brwlockHistories = items['brwlock-history'];
     for (var i in brwlockHistories) {
       var obj = {};
