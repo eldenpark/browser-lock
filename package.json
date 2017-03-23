@@ -6,7 +6,8 @@
   "scripts": {
     "clean": "rm -rf lib/*",
     "copy": "cp -a src/. lib/",
-    "build": "npm run clean && npm run copy && babel src -d lib",
+    "build": "npm run clean && npm run copy && babel src -d lib && npm run build:webpack",
+    "build:webpack": "cross-env NODE_ENV=production webpack --config webpack/webpack.config.js --color --progress",
     "test": "test"
   },
   "repository": {
@@ -29,9 +30,12 @@
   "homepage": "https://github.com/enginehenryed/pattern-lock-extension#readme",
   "devDependencies": {
     "babel-cli": "^6.24.0",
+    "babel-loader": "^6.4.1",
     "babel-polyfill": "^6.23.0",
     "babel-preset-env": "^1.2.2",
     "babel-preset-latest": "^6.24.0",
-    "ejs": "^2.5.6"
+    "cross-env": "^3.2.4",
+    "ejs": "^2.5.6",
+    "source-map-loader": "^0.2.0"
   }
 }
