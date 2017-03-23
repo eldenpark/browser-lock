@@ -6,6 +6,7 @@ document.addEventListener('DOMContentLoaded', function () {
   background.console.log('evt handler');
   document.getElementById('lockBrowserBtn').addEventListener('click', lockBrowser);
   document.getElementById('unlockBrowserBtn').addEventListener('click', unLockBrowser);
+  document.getElementById('settingsBtn').addEventListener('click', setting);
 })
 
 function lockBrowser(evt) {
@@ -16,4 +17,8 @@ function lockBrowser(evt) {
 function unLockBrowser(evt) {
   background.console.log('reopen btn click');
   background.brwlock.unLockBrowser();
+}
+
+function setting() {
+  window.open("/html/options.html");
 }
