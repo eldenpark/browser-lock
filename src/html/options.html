@@ -51,12 +51,14 @@
 
       <div id="pwConf">
         <p class="confTitle">Password</p>
-        <p class="msgDefault">Type a password of length 4-14</p>
+        <p id="pwConfMsgDefault" class="msg">Type a password of length 4-14</p>
+        <p id="pwConfMsgSuccess" class="msg hide">Successfully udpated the password</p>
+        <p id="pwConfMsgError" class="msg hide">Something wrong</p>
         <div class="inputGroup">
-          <input type="password" placeholder="new password">
-          <input type="password" placeholder="re-enter">
+          <input id="pwConfPw1" type="password" placeholder="new password">
+          <input id="pwConfPw2" type="password" placeholder="re-enter">
         </div>
-        <button type="button">Save</button>
+        <button id="pwConfSubmit" type="button">Save</button>
       </div>
 
       <div id="patternConf">
@@ -64,7 +66,8 @@
         <div id="patternLockWrapper">
           <div class="messageBox">
             <p id="patternMsgDefault">Draw on</p>
-            <p id="patternMsgSuccess" class="hide">Successfully updated the pattern.</p>
+            <p id="patternMsgSaved" class="hide">Successfully updated the pattern.</p>
+            <p id="patternMsgSuccess" class="hide">Good to go</p>
             <p id="patternMsgError" class="hide">Wrong pattern. Try again.</p>
           </div>
           <div id="patternBlock" class="hide"></div>

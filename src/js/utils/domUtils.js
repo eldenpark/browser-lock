@@ -1,3 +1,8 @@
+const get = (id) => {
+  if (id) {
+    return document.getElementById(id)
+  }
+}
 
 const hideElement = (id) => {
   if (document.getElementById(id)) {
@@ -13,5 +18,6 @@ const showElement = (id) => {
 
 export default {
   hideElement,
-  showElement
+  showElement,
+  get
 }

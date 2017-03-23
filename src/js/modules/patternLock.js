@@ -1,41 +1,41 @@
-const successCallback = (lock) => {
-  showElement('patternBlock')
-  hideElement('patternMsgDefault')
-  showElement('patternMsgSuccess')
+import constant from '../constant/constant'
+import domUtils from '../utils/domUtils'
+import authenticationActions from '../actions/authenticationActions'
+
+const updateSuccess = (lock) => {
+  domUtils.showElement('patternBlock')
+  domUtils.hideElement('patternMsgDefault')
+  domUtils.showElement('patternMsgSaved')
 
   setTimeout(() => {
-    hideElement('patternMsgSuccess')
+    domUtils.hideElement('patternMsgSaved')
     lock.reset();
-    showElement('patternMsgDefault')
-    hideElement('patternBlock')
+    domUtils.showElement('patternMsgDefault')
+    domUtils.hideElement('patternBlock')
   }, 2000)
 }
 
 const errorCallback = (lock) => {
-  showElement('patternBlock')
-  hideElement('patternMsgDefault')
-  showElement('patternMsgError')
+  domUtils.showElement('patternBlock')
+  domUtils.hideElement('patternMsgDefault')
+  domUtils.showElement('patternMsgError')
 
   setTimeout(() => {
-    hideElement('patternMsgError')
+    domUtils.hideElement('patternMsgError')
     lock.reset();
-    showElement('patternMsgDefault')
-    hideElement('patternBlock')
+    domUtils.showElement('patternMsgDefault')
+    domUtils.hideElement('patternBlock')
   }, 2000)
 }
 
-const checkPattern = (lock, pattern, success, error) => {
-  chrome.storage.sync.get(KEY_PATTERN, function(res) {
-    console.log("key in storage", res)
-    if (pattern == res[KEY_PATTERN]) {
-      success(lock)
-    } else {
-      error(lock)
-    }
-  })
+const checkPatternToUpdate = (lock, pattern, success) => {
+  var obj = {}
+  obj[constant.MASTERPW] = pattern
+
+  authenticationActions.setPattern(obj, success, lock)
 }
 
-const initiate = () => {
+const updateReady = () => {
   /**
    * Initiates pattern lock
    * Check 'patternLock.js' for reference.
@@ -44,11 +44,11 @@ const initiate = () => {
     allowRepeat: true,
     margin: 25,
     radius: 9,
-    onDraw: (pattern) => checkPattern(lock, pattern, successCallback, errorCallback)
+    onDraw: (pattern) => checkPatternToUpdate(lock, pattern, updateSuccess)
   })
 }
 
-export default (() => {
-  console.log(11);
-  initiate();
-})();
+export default {
+  updateReady
+
+}

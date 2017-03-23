@@ -491,18 +491,22 @@ a {
   #authentication .confGroup .confTitle {
     text-decoration: underline;
     text-align: center; }
-  #authentication .confGroup #pwConf .msgDefault {
-    margin-top: 15px; }
-  #authentication .confGroup #pwConf .inputGroup {
-    margin: 20px 0 15px; }
-    #authentication .confGroup #pwConf .inputGroup input {
-      height: 30px;
-      display: block;
-      margin-top: 10px;
-      width: 100%; }
-  #authentication .confGroup #pwConf button {
-    width: 100%;
-    height: 25px; }
+  #authentication .confGroup #pwConf {
+    width: 250px;
+    text-align: center; }
+    #authentication .confGroup #pwConf .msg {
+      margin-top: 15px; }
+    #authentication .confGroup #pwConf .inputGroup {
+      margin: 20px 0 15px; }
+      #authentication .confGroup #pwConf .inputGroup input {
+        outline: none;
+        height: 30px;
+        display: block;
+        margin-top: 10px;
+        width: 100%; }
+    #authentication .confGroup #pwConf button {
+      width: 100%;
+      height: 25px; }
 
 #patternLockWrapper {
   position: relative;
