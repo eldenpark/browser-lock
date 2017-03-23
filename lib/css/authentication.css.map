@@ -1,7 +1,0 @@
-{
-"version": 3,
-"mappings": "AAEE,0BAAW;EACT,OAAO,EAAE,IAAI",
-"sources": ["../scss/authentication.scss"],
-"names": [],
-"file": "authentication.css"
-}
