@@ -1,7 +1,0 @@
-{
-"version": 3,
-"mappings": "AAAA,CAAE;EACA,MAAM,EAAE,CAAC;;AAGX,MAAO;EACL,WAAW,EAAE,IAAI",
-"sources": ["../scss/general.scss"],
-"names": [],
-"file": "stash.css"
-}
