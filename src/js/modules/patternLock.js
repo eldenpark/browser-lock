@@ -7,6 +7,9 @@ const updateSuccess = (lock) => {
   domUtils.hideElement('patternMsgDefault')
   domUtils.showElement('patternMsgSaved')
 
+  domUtils.get('pwConf').firstElementChild.classList.remove('active')
+  domUtils.get('patternConf').firstElementChild.classList.add('active')
+
   setTimeout(() => {
     domUtils.hideElement('patternMsgSaved')
     lock.reset();
