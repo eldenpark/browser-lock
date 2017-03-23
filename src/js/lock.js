@@ -1,2 +1,9 @@
+import patternLock from './modules/patternLock'
+import pwConf from './modules/pwConf'
+import background from './background'
 
-console.log(22)
+window.onload = () => {
+
+  patternLock.promptReady(background.openAllPastUrls);
+
+}

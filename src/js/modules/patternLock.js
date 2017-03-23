@@ -24,26 +24,14 @@ const updateSuccess = (lock, pattern) => {
   }, 2000)
 }
 
-const demandError = (lock) => {
-  domUtils.showElement('patternBlock')
-  domUtils.hideElement('patternMsgDefault')
-  domUtils.showElement('patternMsgError')
-
-  setTimeout(() => {
-    domUtils.hideElement('patternMsgError')
-    lock.reset();
-    domUtils.showElement('patternMsgDefault')
-    domUtils.hideElement('patternBlock')
-  }, 2000)
-}
-
 const checkIfPwIsAlreadySet = (lock, pattern, success) => {
   authenticationActions.getPattern(lock, pattern, success)
 }
 
 const updateOrDemandPassword = (lock, pattern, res) => {
   console.log(11, res)
-  if (!res || res === '' || demandSuccess) {
+  if (!res.hasOwnProperty(constant.MASTERPW) || res === '' || demandSuccess) {
+    console.log(1)
     updateSuccess(lock, pattern)
   } else {
     demandPassword(lock, pattern, res)
@@ -78,12 +66,53 @@ const demandPassword = (lock, pattern, res) => {
     }, 2000)
   }
 
-
-
 }
 
-const checkPatternToUpdate = (lock, pattern, success) => {
+const checkPatternToUpdate = (lock, pattern) => {
   checkIfPwIsAlreadySet(lock, pattern, updateOrDemandPassword)
+}
+
+const userDidTypeCorrect = (lock, openTabs) => {
+  domUtils.showElement('patternBlock')
+  domUtils.hideElement('patternMsgSuccess')
+
+  setTimeout(() => {
+    domUtils.hideElement('patternMsgError')
+    lock.reset();
+    domUtils.showElement('patternMsgDefault')
+    domUtils.hideElement('patternBlock')
+    openTabs()
+
+  }, 2000)
+}
+
+const userDidTypeWrong = (lock) => {
+  domUtils.showElement('patternBlock')
+  domUtils.hideElement('patternMsgDefault')
+  domUtils.showElement('patternMsgError')
+
+  setTimeout(() => {
+    domUtils.hideElement('patternMsgError')
+    lock.reset();
+    domUtils.showElement('patternMsgDefault')
+    domUtils.hideElement('patternBlock')
+  }, 2000)
+}
+
+const handleUserPattern = (lock, pattern, res, openTabs) => {
+  console.log(1, pattern, res)
+  if (res.hasOwnProperty(constant.MASTERPW) && res[constant.MASTERPW] === pattern) {
+    console.log('yalu')
+    userDidTypeCorrect(lock, openTabs)
+  } else {
+    console.log('nah')
+    userDidTypeWrong(lock)
+
+  }
+}
+
+const checkPatternDefault = (lock, pattern, handler, openTabs) => {
+  authenticationActions.getPattern(lock, pattern, handler, openTabs)
 }
 
 const updateReady = () => {
@@ -95,11 +124,20 @@ const updateReady = () => {
     allowRepeat: true,
     margin: 25,
     radius: 9,
-    onDraw: (pattern) => checkPatternToUpdate(lock, pattern, updateSuccess)
+    onDraw: (pattern) => checkPatternToUpdate(lock, pattern)
+  })
+}
+
+const promptReady = (openTabs) => {
+  const lock = new PatternLock("#patternLock", {
+    allowRepeat: true,
+    margin: 25,
+    radius: 9,
+    onDraw: (pattern) => checkPatternDefault(lock, pattern, handleUserPattern, openTabs)
   })
 }
 
 export default {
-  updateReady
-
+  updateReady,
+  promptReady
 }

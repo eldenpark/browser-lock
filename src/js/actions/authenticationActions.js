@@ -27,9 +27,10 @@ const getPassword = (success) => {
   })
 }
 
-const getPattern = (lock, pattern, success) => {
+const getPattern = (lock, pattern, success, openTabs) => {
+  console.log('get pattern', pattern)
   chrome.storage.local.get(constant.MASTERPW, (res) => {
-    success(lock, pattern, res)
+    success(lock, pattern, res, openTabs)
   })
 }
 

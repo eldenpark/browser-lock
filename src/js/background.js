@@ -39,6 +39,7 @@ function setBrowserLockStatus(val) {
 }
 
 brwlock.unLockBrowser = () => {
+  console.log('open All Past Urls')
   let cookieRestored = handleCookies.restore();
   console.log(1, cookieRestored)
 
@@ -53,3 +54,8 @@ brwlock.unLockBrowser = () => {
 brwlock.cookie = handleCookies;
 brwlock.history = handleHistory;
 brwlock.storage = handleStorage;
+
+export default {
+  openAllPastUrls: brwlock.openAllPastUrls
+}
+
