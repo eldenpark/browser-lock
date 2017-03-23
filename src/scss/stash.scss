@@ -1,7 +1,11 @@
 @import "general.scss";
 @import "mixin.scss";
 
-#stash {
+#lockHistory {
+
+  .date {
+    font-style: italic;
+  }
 
   #stashList {
     border-radius: 3px;

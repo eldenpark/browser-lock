@@ -13,50 +13,69 @@
 
   <div id="masthead">
     <p class="logo">
-      logo
+
     </p>
-    <ul class="rightBtnGroup">
-      <li class="">Stash</li>
-      <li class="">Pattern</li>
-      <li class="">Docs</li>
+    <ul class="leftBtnGroup">
       <li class=""><a href="https://github.com/enginehenryed/pattern-lock-extension">GIT</a></li>
+    </ul>
+    <ul class="rightBtnGroup">
+      <li>EN</li>
+      <li>KO</li>
     </ul>
   </div>
 
   <div id="header">
-    <p class="title">Pattern Lock Extension</p>
-    <p class="subtitle">Browser lock for whatever circumstance. Safe browsing.</p>
+    <p class="title">Browser Lock</p>
+    <p class="subtitle">Browser lock in whatever circumstances. Safe browsing.</p>
   </div>
 
   <div id="desc">
     Pattern lock is something like this.
   </div>
 
-  <div id="stash">
-    <p class="title">History</p>
+  <div id="lockHistory">
+    <p class="title">Latest Lock</p>
     <p class="content">
-      List of web browsing history by datetime. Click and get yourself onto the exact spot you were
-      on last time.
+      <span class="lockHistoryMsgDefault hide">The browser has never been locked before</span>
+      <span class="lockHistoryMsgNever">
+        The browser has been lastly locked on <span class="date">2017 01 01</span>
+      </span>
+
     </p>
-    <div id="stashList">
-
-    </div>
   </div>
 
-  <div id="patternConf">
-    <p class="title">Pattern</p>
-    <p class="content">Register or update the pattern.</p>
-    <div id="patternLockWrapper">
-      <div class="messageBox">
-        <p id="messageDefault">Draw on</p>
-        <p id="messageSuccess" class="hide">Successfully updated the pattern.</p>
-        <p id="messageError" class="hide">Wrong pattern. Try again.</p>
+  <div id="authentication">
+    <p class="title">Authentication</p>
+    <p class="content">Register or update the password or pattern.</p>
+    <div class="confGroup">
+
+      <div id="pwConf">
+        <p class="confTitle">Password</p>
+        <p class="msgDefault">Type a password of length 4-14</p>
+        <div class="inputGroup">
+          <input type="password" placeholder="new password">
+          <input type="password" placeholder="re-enter">
+        </div>
+        <button type="button">Save</button>
       </div>
-      <div id="patternBlock" class="hide"></div>
-      <div id="patternLock"/>
+
+      <div id="patternConf">
+        <p class="confTitle">Pattern</p>
+        <div id="patternLockWrapper">
+          <div class="messageBox">
+            <p id="patternMsgDefault">Draw on</p>
+            <p id="patternMsgSuccess" class="hide">Successfully updated the pattern.</p>
+            <p id="patternMsgError" class="hide">Wrong pattern. Try again.</p>
+          </div>
+          <div id="patternBlock" class="hide"></div>
+          <div id="patternLock"/>
+        </div>
+      </div>
     </div>
 
   </div>
+
+
 
   <div id="credit">
     <p>who made this?</p>

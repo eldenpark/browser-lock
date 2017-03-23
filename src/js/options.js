@@ -5,33 +5,39 @@ const NAMESPACE = "plExt-";
 const KEY_PATTERN = `${NAMESPACE}pattern`;
 
 const hideElement = (id) => {
-  document.getElementById(id).classList.add('hide');
+  if (document.getElementById(id)) {
+    document.getElementById(id).classList.add('hide');
+  }
 }
 
 const showElement = (id) => {
-  document.getElementById(id).classList.remove('hide');
+  if (document.getElementById(id)) {
+    document.getElementById(id).classList.remove('hide');
+  }
 }
 
 const successCallback = (lock) => {
   showElement('patternBlock')
-  hideElement('messageDefault')
-  showElement('messageSuccess')
+  hideElement('patternMsgDefault')
+  showElement('patternMsgSuccess')
+
   setTimeout(() => {
-    hideElement('patternError')
+    hideElement('patternMsgSuccess')
     lock.reset();
-    showElement('messageDefault')
+    showElement('patternMsgDefault')
     hideElement('patternBlock')
   }, 2000)
 }
 
 const errorCallback = (lock) => {
   showElement('patternBlock')
-  hideElement('messageDefault')
-  showElement('messageError')
+  hideElement('patternMsgDefault')
+  showElement('patternMsgError')
+
   setTimeout(() => {
-    hideElement('messageError')
+    hideElement('patternMsgError')
     lock.reset();
-    showElement('messageDefault')
+    showElement('patternMsgDefault')
     hideElement('patternBlock')
   }, 2000)
 }
@@ -60,12 +66,15 @@ window.onload = () => {
   const lock = new PatternLock("#patternLock", {
     allowRepeat: true,
     margin: 25,
-    radius: 7,
+    radius: 9,
     onDraw: (pattern) => checkPattern(lock, pattern, successCallback, errorCallback)
   })
 
   /**
-   *
+   * Loads browser history stash
    */
+  chrome.cookies.getAll({url: "https://facebook.com"}, function(cookies) {
+    console.log(1, cookies)
+  });
 
 }

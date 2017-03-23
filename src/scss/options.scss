@@ -4,12 +4,12 @@
 @import "masthead.scss";
 @import "header.scss";
 @import "stash.scss";
+@import "authentication.scss";
 @import "patternLockWrapper.scss";
 
 #wrap {
-  width: 850px;
+  width: 800px;
   margin: 0 auto;
-  @include borderGrey;
 
   > div {
     margin-bottom: 12px;

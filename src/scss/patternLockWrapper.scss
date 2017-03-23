@@ -10,11 +10,11 @@
     top: 15px;
     text-align: center;
 
-    #messageError {
+    #patternMsgError {
       color: #d60007;
     }
 
-    #messageSuccess {
+    #patternMsgSuccess {
       color: #0000ae;
     }
   }
@@ -36,7 +36,7 @@
     overflow: hidden
   }
 
-  .patt-dots{
+  .patt-dots {
     background: #353535;
     width: 10px;height: 10px;
     border-radius:5px;
@@ -47,7 +47,7 @@
     margin-left:-5px;
   }
 
-  .patt-lines{
+  .patt-lines {
     border-radius:5px;
     height:10px;
     background: rgba(12, 12, 12, 0.85);
@@ -57,13 +57,14 @@
     -webkit-transform-origin:5px 5px;
   }
 
-  .patt-circ{
+  .patt-circ {
     position:relative;
     float: left;
     box-sizing: border-box;
     -moz-box-sizing: border-box;
   }
-  .patt-circ.hovered{
+
+  .patt-circ.hovered {
     border:3px solid $black;
     background-color: $black;
   }
