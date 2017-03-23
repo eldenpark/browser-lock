@@ -402,6 +402,11 @@ template {
 [hidden] {
   display: none; }
 
+* {
+  box-sizing: border-box;
+  line-height: 1.2;
+  font-size: 14px; }
+
 p {
   margin: 0; }
 
@@ -418,12 +423,27 @@ a {
 
 #masthead {
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  height: 40px;
   border: 1px solid black; }
-  #masthead .rightBtnGroup {
+  #masthead ul {
+    list-style: none;
+    padding: 0; }
+  #masthead .logo {
+    background: url("/img/logo-48.png") no-repeat;
+    width: 30px;
+    height: 30px;
+    background-size: 30px 30px;
+    margin-right: 20px; }
+  #masthead .leftBtnGroup {
     font-weight: bold;
     list-style: none;
+    display: flex; }
+    #masthead .leftBtnGroup li {
+      margin-right: 15px; }
+  #masthead .rightBtnGroup {
+    color: gray;
+    margin-left: auto;
     display: flex; }
     #masthead .rightBtnGroup li {
       margin-right: 15px; }
@@ -434,6 +454,11 @@ a {
     font-size: 24px; }
   #header .subtitle {
     font-size: 20px; }
+
+* {
+  box-sizing: border-box;
+  line-height: 1.2;
+  font-size: 14px; }
 
 p {
   margin: 0; }
@@ -449,11 +474,35 @@ a {
 .hide {
   display: none; }
 
-#stash #stashList {
+#lockHistory .date {
+  font-style: italic; }
+#lockHistory #stashList {
   border-radius: 3px;
   margin: 15px 15px 0;
   height: 100px;
   background-color: #ededed; }
+
+#authentication .confGroup {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center; }
+  #authentication .confGroup > div:first-child {
+    margin-right: 50px; }
+  #authentication .confGroup .confTitle {
+    text-decoration: underline;
+    text-align: center; }
+  #authentication .confGroup #pwConf .msgDefault {
+    margin-top: 15px; }
+  #authentication .confGroup #pwConf .inputGroup {
+    margin: 20px 0 15px; }
+    #authentication .confGroup #pwConf .inputGroup input {
+      height: 30px;
+      display: block;
+      margin-top: 10px;
+      width: 100%; }
+  #authentication .confGroup #pwConf button {
+    width: 100%;
+    height: 25px; }
 
 #patternLockWrapper {
   position: relative;
@@ -463,9 +512,9 @@ a {
     position: absolute;
     top: 15px;
     text-align: center; }
-    #patternLockWrapper .messageBox #messageError {
+    #patternLockWrapper .messageBox #patternMsgError {
       color: #d60007; }
-    #patternLockWrapper .messageBox #messageSuccess {
+    #patternLockWrapper .messageBox #patternMsgSuccess {
       color: #0000ae; }
   #patternLockWrapper #patternBlock {
     position: absolute;
@@ -507,10 +556,9 @@ a {
     background-color: #212121; }
 
 #wrap {
-  width: 850px;
-  margin: 0 auto;
-  border: 1px solid lightGrey; }
+  width: 800px;
+  margin: 0 auto; }
   #wrap > div {
-    margin-bottom: 12px; }
+    margin-bottom: 15px; }
 
 /*# sourceMappingURL=options.css.map */

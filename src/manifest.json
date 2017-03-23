@@ -2,6 +2,15 @@
   "background": {
     "page": "html/background.html"
   },
+  "content_scripts": [
+    {
+      "js": [
+        "js/content.js"
+      ],
+      "matches": [
+        "\u003Call_urls\u003E"
+      ]
+    }],
   "browser_action" : {
       "default_popup": "html/popup.html"
    },
@@ -18,6 +27,7 @@
   "name": "Pattern Lock Extension",
   "options_page": "html/options.html",
   "permissions": [
+    "cookies",
     "tabs",
     "\u003Call_urls>",
     "clipboardRead",
