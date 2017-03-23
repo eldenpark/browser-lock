@@ -1,12 +1,12 @@
+import handleStorage from './handleStorage'
+import cookieActions from '../actions/cookieActions'
+import constant from '../constant/constant'
+
+const brwlock = window.brwlock = {}
+
 function save() {
   chrome.cookies.getAll({}, function (cookies) {
-    chrome.storage.sync.set({ 'brwlock-cookie': cookies }, function () {
-      console.log('save cookie to storage ' + cookies);
-    });
-
-    for (var i = 0; i < cookies.length; i++) {
-      console.log("cookies [" + i + "] " + Object.values(cookies[i]));
-    }
+    handleStorage.save('brwlock-cookies', cookies);
   });
 }
 
@@ -16,16 +16,23 @@ function remove() {
 
 function restore() {
   console.log('cookie restore');
-  chrome.storage.sync.get('brwlock-cookie', function (items) {
-    var brwlockCookies = items['brwlock-cookie'];
-    for (var i in brwlockCookies) {
-      brwlockCookies[i].url = getCookieUrl(brwlockCookies[i]);
-      delete brwlockCookies[i].hostOnly;
-      delete brwlockCookies[i].session;
+  const promise = new Promise((resolve, reject) => {
+    cookieActions.getCookies(constant.COOKIES, getCookiesSuccessCallBack, resolve)
+  })
 
-      chrome.cookies.set(brwlockCookies[i]);
-    }
-  });
+  return promise;
+}
+
+function getCookiesSuccessCallBack(items) {
+  var brwlockCookies = items['brwlock-cookies'];
+  console.log(brwlockCookies);
+  for (var i in brwlockCookies) {
+    brwlockCookies[i].url = getCookieUrl(brwlockCookies[i]);
+    delete brwlockCookies[i].hostOnly;
+    delete brwlockCookies[i].session;
+    
+    chrome.cookies.set(brwlockCookies[i]);
+  }
 }
 
 function getCookieUrl(cookie) {

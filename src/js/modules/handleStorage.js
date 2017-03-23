@@ -1,20 +1,20 @@
 var background = chrome.extension.getBackgroundPage();
 
 function save(key, item) {
-  chrome.storage.sync.clear();
-
   var obj = {}
   obj[key] = item;
-  chrome.storage.sync.set(obj, function () {
-    background.console.log("save storage " + item);
+  chrome.storage.local.set(obj, function () {
   });
 }
 
 function get(key, success) {
-  chrome.storage.sync.get(key, function (items) {
-    var urls = String(Object.values(items));
-     success(urls);
+  chrome.storage.local.get(key, function (items) {
+     success(items);
   });
+}
+
+function clear() {
+  chrome.storage.local.clear();
 }
 
 export default {

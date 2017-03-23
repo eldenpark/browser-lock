@@ -11,14 +11,21 @@ const brwlock = window.brwlock = {}
 brwlock.closeAllTabs = () => {
   console.log("background closeAlltabs");
   handleTabs.closeAllTabs();
-  handleCookies.closeAllTabs();
+  handleCookies.save();
+  handleCookies.remove();
 }
 
 brwlock.openAllPastUrls = () => {
-  handleTabs.openAllPastUrls();
+  let cookieRestored = handleCookies.restore();
+  console.log(1, cookieRestored)
+
+  Promise
+    .all([cookieRestored])
+    .then( ()=> {
+      handleTabs.openAllPastUrls();
+    })
 }
 
 brwlock.cookie = handleCookies;
-
 brwlock.history = handleHistory;
 

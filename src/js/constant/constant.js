@@ -6,5 +6,6 @@ const NAMESPACE = 'brwlock'
 export default {
   NAMESPACE: NAMESPACE,
   PATTERN: `${NAMESPACE}-pattern`,
-  MASTERPW: `${NAMESPACE}-masterpw`
+  MASTERPW: `${NAMESPACE}-masterpw`,
+  COOKIES: `${NAMESPACE}-cookies`
 }
