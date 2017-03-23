@@ -11,7 +11,7 @@ function get(key, success) {
   chrome.storage.local.get(key, function (items) {
      success(items);
   });
-  clear();
+  chrome.storage.local.remove(key);
 }
 
 function clear() {
