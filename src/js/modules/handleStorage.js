@@ -20,5 +20,6 @@ function clear() {
 
 export default {
   save,
-  get
+  get,
+  clear
 }
