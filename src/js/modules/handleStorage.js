@@ -1,6 +1,23 @@
-function saveItemIntoStorage(key, item) {
+var background = chrome.extension.getBackgroundPage();
 
-  chrome.storage.sync.set({ key : item }, function () {
-    console.log("save storage " + item);
+function save(key, item) {
+  chrome.storage.sync.clear();
+
+  var obj = {}
+  obj[key] = item;
+  chrome.storage.sync.set(obj, function () {
+    background.console.log("save storage " + item);
   });
-}s
+}
+
+function get(key, success) {
+  chrome.storage.sync.get(key, function (items) {
+    var urls = String(Object.values(items));
+     success(urls);
+  });
+}
+
+export default {
+  save,
+  get
+}
