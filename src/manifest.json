@@ -28,7 +28,8 @@
     "unlimitedStorage",
     "webNavigation",
     "webRequest",
-    "webRequestBlocking"
+    "webRequestBlocking",
+    "cookies"
   ],
   "version": "2.9.2",
   "web_accessible_resources": [
