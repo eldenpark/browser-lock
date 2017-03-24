@@ -38,7 +38,7 @@ const init = () => {
     .then(() => {
       console.log("check lock : " + browserIsLocked);
       if (browserIsLocked == false) {
-        location.href = "http://google.co.kr";
+        //location.href = "http://google.co.kr";
       }
     })
 }
