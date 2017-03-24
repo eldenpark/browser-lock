@@ -12,6 +12,10 @@ import handleStorage from './modules/handleStorage'
 const brwlock = window.brwlock = {}
 let browserIsLocked;
 
+chrome.runtime.onMessage.addListener(function(message,sender,sendResponse){
+  sendResponse({farewell:"goodbye"});
+});
+
 brwlock.lockBrowser = () => {
 
   let checkStatus = handleLockStatus.checkLockStatus(getLockStatusSuccessCallBack);

@@ -424,8 +424,7 @@ a {
 #masthead {
   display: flex;
   align-items: center;
-  height: 40px;
-  border: 1px solid black; }
+  height: 40px; }
   #masthead ul {
     list-style: none;
     padding: 0; }

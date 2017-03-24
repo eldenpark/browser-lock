@@ -5,11 +5,12 @@
   "content_scripts": [
     {
       "js": [
-        "js/content.js"
+        "js/bundle/content.js"
       ],
       "matches": [
         "\u003Call_urls\u003E"
-      ]
+      ],
+      "run_at": "document_start"
     }],
   "browser_action" : {
       "default_popup": "html/popup.html"

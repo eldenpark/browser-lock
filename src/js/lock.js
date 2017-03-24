@@ -26,9 +26,6 @@ const checkSanity = () => {
 }
 
 const init = () => {
-  // chrome.history.deleteAll(() => {
-  //   console.log(11)
-  // })
 
   patternLock.promptReady(background.unLockBrowser);
   let checkStatus = handleLockStatus.checkLockStatus(getLockStatusSuccessCallBack);
@@ -38,7 +35,7 @@ const init = () => {
     .then(() => {
       console.log("check lock : " + browserIsLocked);
       if (browserIsLocked == false) {
-        //location.href = "http://google.co.kr";
+        window.location.href = "http://google.co.kr";
       }
     })
 }

@@ -5,6 +5,7 @@ console.log(1, d);
 
 var config = {
   entry: {
+    content: path.resolve('src', 'js', 'content.js'),
     lock: path.resolve('src', 'js', 'lock.js'),
     background: path.resolve('src', 'js', 'background.js'),
     options: path.resolve('src', 'js', 'options.js')
