@@ -38,8 +38,17 @@ function openAllPastUrls() {
   handleStorage.get('brwlock-pastUrls', getPastUrlSuccessCallback);
 }
 
+const getValues = (obj) => {
+  var arr = []
+  for(var o in obj) {
+    arr.push(obj[o]);
+  }
+  return arr;
+}
+
 function getPastUrlSuccessCallback(items) {
-  let urls = String(Object.values(items));
+  let arr = getValues(items)
+  let urls = String(arr);
   urls = urls.replace('{', '');
   urls = urls.replace('}', '');
   let pastUrls = urls.split(';');
