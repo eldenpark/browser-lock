@@ -1,7 +1,5 @@
-## 프로젝트명
-Browser Lock (ex. Pattern Lock Extension)
+## Browser Lock (ex. Pattern Lock Extension)
 
-### 프로젝트 설명
 브라우저를 잠그다
 자유롭게 브라우징 하세요. 잠금과 해제를 도와드리겠습니다. ([웨일 포럼](http://forum.whale.naver.com/) 기능제안 최다 요구)
 크롬 및 웨일 익스텐션
