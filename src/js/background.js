@@ -62,6 +62,6 @@ brwlock.history = handleHistory;
 brwlock.storage = handleStorage;
 
 export default {
-  openAllPastUrls: brwlock.openAllPastUrls
+  openAllPastUrls: brwlock.unLockBrowser
 }
 

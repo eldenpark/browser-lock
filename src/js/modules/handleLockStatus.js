@@ -10,7 +10,7 @@ function checkLockStatus(getLockStatusSuccessCallBack) {
 }
 
 function updateLockStatus(lockStatus) {
-  handleStorage.save("brwlock-lockStatus", lockStatus);
+  handleStorage.save("brwlwock-lockStatus", lockStatus);
 }
 
 export default {
