@@ -1,0 +1,62 @@
+@import "normalize.scss";
+@import "general.scss";
+@import "color.scss";
+@import "authentication.scss";
+@import "patternLockWrapper.scss";
+
+body {
+  overflow: hidden;
+  color: white;
+  background-color: $blackish;
+  display: flex;
+  align-items: center;
+}
+
+#wrap {
+  margin: 0 auto;
+  width: 800px;
+
+  > div {
+    margin-bottom: 20px;
+  }
+}
+
+#logo {
+  margin: 0 auto;
+  background: url("/img/logo-128.png") no-repeat;
+  width: 64px;
+  height: 64px;
+  background-size: 64px 64px;
+}
+
+#title {
+  font-size: 28px;
+  font-weight: bold;
+  text-align: center;
+}
+
+#authentication {
+  .title {
+    text-align: center;
+  }
+  .content {
+    text-align: center;
+  }
+
+  ul {
+    list-style: none;
+  }
+
+  .patt-dots {
+    background-color: white;
+  }
+
+  .patt-lines {
+    background: white;
+  }
+
+  .patt-circ.hovered {
+    border: white;
+    background-color: white;
+  }
+}

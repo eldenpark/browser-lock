@@ -1,0 +1,60 @@
+<html>
+
+<head>
+  <link rel="stylesheet" href="/css/lock.css">
+</head>
+
+<body>
+
+  <div id="wrap">
+
+    <div id="logo"></div>
+
+    <div id="title">
+      Browser is locked
+    </div>
+
+    <div id="authentication">
+      <p class="title">Authentication</p>
+      <p class="content">Type your password or pattern.</p>
+      <div class="confGroup">
+
+        <div id="pwConf">
+          <p class="confTitle">Password</p>
+          <p id="pwConfMsgDefault" class="msg">Type a password</p>
+          <p id="pwConfMsgSuccess" class="msg hide">Successfully udpated the password</p>
+          <p id="pwConfMsgError" class="msg hide">Something wrong</p>
+          <div class="inputGroup">
+            <input id="pwConfPw1" type="password" placeholder="new password">
+            <input id="pwConfPw2" type="password" placeholder="re-enter">
+          </div>
+          <button id="pwConfSubmit" type="button">Get in</button>
+        </div>
+
+        <div id="patternConf">
+          <p class="confTitle">Pattern</p>
+          <div id="patternLockWrapper">
+            <div class="messageBox">
+              <p id="patternMsgDefault">Draw your old pattern or new if you haven't set any</p>
+              <p id="patternMsgSaved" class="hide">Successfully updated the pattern.</p>
+              <p id="patternMsgSuccess" class="hide">Good to go</p>
+              <p id="patternMsgError" class="hide">Wrong pattern. Try again.</p>
+              <p id="patternMsgDemand" class="hide">First draw your last pattern</p>
+              <p id="patternMsgDemandSuccess" class="hide">Matches old pattern</p>
+              <p id="patternMsgReDemand" class="hide">Draw to update</p>
+            </div>
+            <div id="patternBlock" class="hide"></div>
+            <div id="patternLock"/>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <script src="/js/lib/jquery-3.2.0.js"></script>
+  <script src="/js/lib/patternLock.js"></script>
+  <script src="/js/bundle/lock.js"></script>
+</body>
+
+</html>

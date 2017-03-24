@@ -1,0 +1,23 @@
+* {
+  box-sizing: border-box;
+  line-height: 1.2;
+  font-size: 14px;
+}
+
+p {
+  margin: 0;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.title {
+  font-weight: bold;
+  margin-bottom: 3px;
+}
+
+.hide {
+  display: none;
+}

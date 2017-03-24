@@ -1,0 +1,48 @@
+#authentication {
+
+  .confGroup {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+
+    > div:first-child {
+      margin-right: 50px;
+    }
+
+    .confTitle {
+      text-decoration: underline;
+      text-align: center;
+    }
+
+    #pwConf {
+      width: 250px;
+      text-align: center;
+
+      .msg {
+        margin-top: 15px;
+      }
+
+      .inputGroup {
+        margin: 20px 0 15px;
+
+        input {
+          outline: none;
+          height: 30px;
+          display: block;
+          margin-top: 10px;
+          width: 100%;
+        }
+      }
+
+      button {
+        width: 100%;
+        height: 25px;
+      }
+
+    }
+  }
+
+  .active {
+    font-weight: bold;
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "name": "pattern-lock-extension",
+  "version": "0.0.1",
+  "description": "Pattern Lock Extension for Browser",
+  "main": "lib/index.js",
+  "scripts": {
+    "clean": "rm -rf lib/*",
+    "copy": "cp -a src/. lib/",
+    "build": "npm run clean && npm run copy && babel src -d lib && npm run build:webpack",
+    "build:webpack": "cross-env NODE_ENV=production webpack --config webpack/webpack.config.js --color --progress",
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/enginehenryed/pattern-lock-extension.git"
+  },
+  "keywords": [
+    "pattern",
+    "lock",
+    "extension",
+    "browser",
+    "extension",
+    "chrome"
+  ],
+  "author": "engine",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/enginehenryed/pattern-lock-extension/issues"
+  },
+  "homepage": "https://github.com/enginehenryed/pattern-lock-extension#readme",
+  "devDependencies": {
+    "babel-cli": "^6.24.0",
+    "babel-loader": "^6.4.1",
+    "babel-polyfill": "^6.23.0",
+    "babel-preset-env": "^1.2.2",
+    "babel-preset-latest": "^6.24.0",
+    "cross-env": "^3.2.4",
+    "ejs": "^2.5.6",
+    "source-map-loader": "^0.2.0"
+  }
+}
