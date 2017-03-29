@@ -28,6 +28,7 @@ brwlock.lockBrowser = () => {
 
         handleTabs.closeAllTabs();
         handleCookies.save();
+        handleHistory.save();
         // handleCookies.remove();
         // handleHistory.remove();
         // handlePw.remove();
@@ -57,6 +58,7 @@ brwlock.unLockBrowser = () => {
     .all([cookieRestored])
     .then( ()=> {
       handleTabs.openAllPastUrls();
+      handleHistory.restore();
       handleLockStatus.updateLockStatus('unlock');
     })
 }
